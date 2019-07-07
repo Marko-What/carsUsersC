@@ -1,0 +1,55 @@
+Naloga:
+
+    Iz baze prebereš seznam avtov/oseb ali kaj podobnega in ga prikažeš v angular aplikaciji z recimo dvemi podatki (ime | priimek).
+    Iz seznama preusmeriš na “detail page”, kjer prikažeš še ostale podatke (ime, priimek, naslov, starost). Na tej strain lahko podatke razen spreminjaš. (na Backendu narediš metode read/ update/ create / delete).
+
+ 
+Za frontend uporabiš naslednje tehnologije, ki jh uporabljamo pri delu na projektu:
+Angular 7 za postavitev aplikacije predlagam, da uporabiš angular cli, tako boš najhitreje naredil aplikacijo. 
+Hkrati boš uporabil npm, node in typescript in se spoznal s strukturo projekta (ki je podobna tudi v aplikaciji, ki jo delamo), ter kako se tak projekt zažene.
+Za prehod med strani uporabi routing (https://angular.io/guide/router).
+Za sam izgled/postavitev elementov na straneh bi predlagala, da uporabiš PrimeNg, to knjižnico uporabljamo tudi mi in v njej so že spisane native angular komponente in directive za UI. Tu imaš vse skupaj s primeri in kodo – tabele, gumbe, inpute, checkboxe…
+ 
+Naredi prosim še link do go githuba ali bitbucketa, da lahko potem pogledamo skupaj aplikacijo in pa za navodila kako naj lokalno zaženemo aplikacijo (da  jo lahko potestiramo). Skupaj z bazo.
+Spisek kaj vse potrebujemo za to in kako zagnati (lahko na hitro v alinejah).
+
+
+
+Simple Angular CarsDeatailsTable application
+
+
+json object
+    fetch data
+        cars with details
+
+     additional component   singleCarDetailsComponent
+            single car details with option to remodify data
+
+            ng generate component singleCarDetailsComponent
+            ng generate component carsDetailsTable
+
+    
+    service
+            mock object later on an array of values
+                        later on nodejs
+    
+
+                read/ update/ create / delete
+
+
+
+
+    backend node
+    
+        database table
+            carsUsers
+                {id:1, ime:"Marko", priimek:"Pojanski", naslov:"bellarea", starost:33, avto:"bmw"}            
+        
+    
+        https://medium.com/@daouda.diallo.cisse/creation-of-web-application-with-node-js-et-angular-v6-part-1-backend-4c90eb79090
+
+
+    mkdir carsUSersNodeBackend
+
+
+

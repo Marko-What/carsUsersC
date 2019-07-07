@@ -1,0 +1,177 @@
+
+<p-messages [(value)]="msgs" class="messageBox" ></p-messages>
+
+<div class="ui-rtl" dir="rtl">
+    <p-dialog [(visible)]="display">
+   
+       <h5> Insert new Car User</h5>
+<form #carUserInputs="ngForm"  > 
+
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" #ime="ngModel" minlength="4" pInputText [(ngModel)]="userInsert.ime" name="ime" required> 
+    <label for="float-input">Ime</label>
+</span>
+
+<div *ngIf="ime.invalid && (ime.dirty || ime.touched)" class="alert alert-danger blue">
+
+				<div *ngIf="ime.errors.required">
+					Ime is required.
+				</div>
+				<div *ngIf="ime.errors.minlength">
+				 Year 4 characters long.
+				</div>
+</div>
+
+
+<br />
+
+
+
+
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="userInsert.priimek" name ="priimek" minlength="4" #priimek="ngModel" required> 
+    <label for="float-input">Priimek</label>
+</span>
+
+<div *ngIf="priimek.invalid && (priimek.dirty || priimek.touched)" class="alert alert-danger blue">
+
+				<div *ngIf="priimek.errors.required">
+					priimek is required.
+				</div>
+				<div *ngIf="priimek.errors.minlength">
+				 Year 4 characters long.
+				</div>
+</div>
+
+
+
+<br />
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="userInsert.naslov" name ="naslov" minlength="4" #naslov="ngModel" required> 
+    <label for="float-input">Naslov</label>
+</span>
+
+<div *ngIf="naslov.invalid && (naslov.dirty || naslov.touched)" class="alert alert-danger blue">
+
+				<div *ngIf="naslov.errors.required">
+					naslov is required.
+				</div>
+				<div *ngIf="naslov.errors.minlength">
+				 Year 4 characters long.
+				</div>
+</div>
+
+
+
+<br />
+
+
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" minlength="1" pInputText [(ngModel)]="userInsert.starost" class="inputWidth" name ="starost" type="number" #starost="ngModel" required> 
+    <label for="float-input">Starost</label>
+</span>
+
+	<div *ngIf="starost.invalid && (starost.dirty || starost.touched)"
+				class="alert alert-danger blue">
+
+			<div *ngIf="starost.errors.required">
+				digits are required.
+			</div>
+			<div *ngIf="starost.errors.minlength">
+				year must be  1 digits long.
+			</div>
+
+		</div>
+
+
+
+
+
+<br />
+
+<span class="ui-float-label">
+<label for="float-input">Avto</label>
+ <select [(ngModel)]="userInsert.avto" name="avto">
+<option value="volvo" (click)="selectCar('volvo')" [selected]="true">Volvo</option>
+				<option value="bmw" (click)="selectCar('bmw')">bmw</option>
+				<option value="saab" (click)="selectCar('saab')">Saab</option>
+				<option value="mercedes" (click)="selectCar('mercedes')" >Mercedes</option>
+				<option value="audi" (click)="selectCar('audi')">Audi</option>
+ </select>
+
+
+</span>
+
+
+
+
+
+
+
+
+<br />
+
+</form>
+
+        <p-footer>
+           <p-button (click)="confirmNewCarUser()" styleClass="ui-button-info" [disabled]="!carUserInputs.form.valid" label="Add new Car User" ></p-button>
+					<p-button (click)="cancelNewCarUser()" styleClass="ui-button-secondary" label="Cancel" ></p-button>
+        </p-footer>
+    </p-dialog>
+</div>
+
+
+
+
+<div class="p-col-6 p-offset-3">
+<button pButton type="button" (click)="newCarUser()" class="ui-button-info" label="Add new Car User" ></button>
+	  
+</div>
+
+<div class="p-grid">
+
+	
+
+    <div class="p-col-6 p-offset-3">
+			
+	<p-table id="carTable" [value]="cars"  [paginator]="true" [rows]="5" [totalRecords]="totalRecords" [columns]="cols" #dt >
+	    <ng-template pTemplate="header">
+		<tr>
+		   <!-- <th >ime</th>
+		    <th>avtomobil</th>
+				<th></th>
+      -->
+     <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+      </th>
+    <th></th>
+		</tr>
+	    </ng-template>
+
+	    <ng-template pTemplate="body" let-car>
+		<tr> 
+		    <td>
+		{{car.ime}}
+			</td>
+		    <td>{{car.avto}}</td>
+				<td  ngClick="singleCarDetails()">	
+				<p-button (click)="singleCarDetails(car)" styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" icon="fa fa-search">
+				</p-button>
+				</td>
+				
+		</tr>
+	    </ng-template>
+
+	</p-table>
+ <button id="svasta" (click)="dt.reset()" ></button>
+      </div><!-- end of p-col-6 p-offset-3 -->
+</div><!-- end of p-grid -->

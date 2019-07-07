@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+
+@import "../node_modules/primeng/resources/themes/nova-light/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeicons/primeicons.css";
+
+
+body {
+        background-color:gray;
+
+}
+
+.blue {
+	color:#007ad9!important;
+	font-weight:800;
+}
+
+.select {
+	width:100%;
+}
+
+.triGumb{
+        width: 30%!important;
+        height: 30px!important;
+        float:left;
+	margin:1px!important;
+}
+.inputWidth {
+	width: 100%;
+}
+
+.absoulte {
+	position: absolute;
+}
+
+.plavi{
+        padding: 5px!important;
+        margin: 10px!important;
+}
+
+input.widthAdjs {
+        width:100%;
+        /*background-color:blue;*/
+}
+
+.minWidth {
+	min-width: 75px;
+}
+
+
+
+.ui-dialog-titlebar {
+        display:none!important;
+}
+
+
+.messageBox {
+	z-index: 9;
+	position: absolute;
+	right: 10%;
+	top: 10%;
+}
+
+
+#svasta {
+	width:0px!important;
+	height:0px!important;
+	border:0px!important;
+}

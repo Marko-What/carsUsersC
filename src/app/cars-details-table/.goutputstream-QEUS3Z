@@ -1,0 +1,176 @@
+
+
+<div class="ui-rtl" dir="rtl">
+	<h5>  Insert new Car User</h5>
+    <p-dialog [(visible)]="display">
+   
+
+<form #carUserInputs="ngForm" > 
+
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" #ime="ngModel" minlength="4" pInputText [(ngModel)]="userInsert.ime" name="ime" required> 
+    <label for="float-input">Ime</label>
+</span>
+
+<div *ngIf="ime.invalid && (ime.dirty || ime.touched)" class="alert alert-danger">
+
+				<div *ngIf="ime.errors.required">
+					Ime is required.
+				</div>
+				<div *ngIf="ime.errors.minlength">
+				 Year 4 characters long.
+				</div>
+</div>
+
+
+<br />
+
+
+
+
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="userInsert.priimek" name ="priimek" minlength="4" #priimek="ngModel" required> 
+    <label for="float-input">Priimek</label>
+</span>
+
+<div *ngIf="priimek.invalid && (priimek.dirty || priimek.touched)" class="alert alert-danger">
+
+				<div *ngIf="priimek.errors.required">
+					priimek is required.
+				</div>
+				<div *ngIf="priimek.errors.minlength">
+				 Year 4 characters long.
+				</div>
+</div>
+
+
+
+<br />
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText [(ngModel)]="userInsert.naslov" name ="naslov" minlength="4" #naslov="ngModel" required> 
+    <label for="float-input">Naslov</label>
+</span>
+
+<div *ngIf="naslov.invalid && (naslov.dirty || naslov.touched)" class="alert alert-danger">
+
+				<div *ngIf="naslov.errors.required">
+					naslov is required.
+				</div>
+				<div *ngIf="naslov.errors.minlength">
+				 Year 4 characters long.
+				</div>
+</div>
+
+
+
+<br />
+
+
+
+
+
+
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" minlength="1" pInputText [(ngModel)]="userInsert.starost" class="inputWidth" name ="starost" type="number" #starost="ngModel" required> 
+    <label for="float-input">Starost</label>
+</span>
+
+	<div *ngIf="starost.invalid && (starost.dirty || starost.touched)"
+				class="alert alert-danger">
+
+			<div *ngIf="starost.errors.required">
+				digits are required.
+			</div>
+			<div *ngIf="starost.errors.minlength">
+				year must be  1 digits long.
+			</div>
+
+		</div>
+
+
+
+
+
+<br />
+
+<span class="ui-float-label">
+
+ <select [(ngModel)]="userInsert.avto">
+				<option value="volvo" (click)="selectCar('volvo')">Volvo</option>
+				<option value="saab" (click)="selectCar('saab')">Saab</option>
+				<option value="mercedes" (click)="selectCar('mercedes')" selected>Mercedes</option>
+				<option value="audi" (click)="selectCar('audi')">Audi</option>
+ </select>
+
+
+</span>
+
+
+
+	
+
+		
+<span class="ui-float-label">
+
+
+
+
+
+
+    <label for="float-input">Avto</label>
+</span>
+
+
+
+
+
+
+<br />
+
+</form>
+
+        <p-footer>
+           <p-button (click)="confirmNewCarUser()" styleClass="ui-button-danger" [disabled]="!carUserInputs.form.valid">Add new Car User</p-button>
+					<p-button (click)="cancelNewCarUser()" styleClass="ui-button-secondary">Cancel</p-button>
+        </p-footer>
+    </p-dialog>
+</div>
+
+
+<p-button (click)="newCarUser()" class="plavi">Add new Car User</p-button>
+
+
+
+
+
+
+<div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+			
+	<p-table [value]="cars" [paginator]="true" [pageLinks]="8" [rows]="5" [rowsPerPageOptions]="[3,6,9]" [totalRecords] ="tablerecordsCount" [pageLinks]="8" >
+	    <ng-template pTemplate="header">
+		<tr>
+		    <th>ime</th>
+		    <th>avtomobil</th>
+		</tr>
+	    </ng-template>
+
+	    <ng-template pTemplate="body" let-car>
+		<tr> 
+		    <td ngClick="singleCarDetails()">
+			<p-button (click)="singleCarDetails(car)" styleClass="ui-button-danger minWidth">{{car.ime}}</p-button>
+			</td>
+		    <td>{{car.avto}}</td>
+		</tr>
+	    </ng-template>
+	   
+	</p-table>
+
+      </div><!-- end of p-col-6 p-offset-3 -->
+</div><!-- end of p-grid -->
